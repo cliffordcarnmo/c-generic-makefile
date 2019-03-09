@@ -1,6 +1,7 @@
 CC=gcc
-CFLAGS=-std=gnu11 -O3 -Wall -Wextra -Wpedantic -Wstrict-aliasing -march=native -m64
-LDFLAGS=-lm
+CFLAGS=-std=gnu11 -O3 -Wall -Wpedantic -march=native -m64
+LDFLAGS=
+LIBS=-lm
 TARGET=build.exe
 SOURCES=$(wildcard src/*.c)
 OBJECTS=$(SOURCES:.c=.o)
@@ -8,7 +9,7 @@ OBJECTS=$(SOURCES:.c=.o)
 all: $(TARGET)
 
 $(TARGET): $(OBJECTS)
-	$(LINK.c) $^ -o $@
+	$(LINK.c) $^ -o $@ $(LIBS)
 
 run:
 	./$(TARGET)
